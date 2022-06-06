@@ -45,6 +45,9 @@ private:
 	int stellung2;
 	int stellung3;
 
+	//UKW
+	char UKW;
+
 	//Steckverbindungen
 	std::unordered_map<char, char> Steck;
 
@@ -53,7 +56,7 @@ public:
 	
 	//Konstruktor********************************************
 	//UKW in Konstruktor mit aufnehmen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	Enigma(int walze1, int walze2, int walze3, int stellung1, int stellung2, int stellung3, std::string steck1, std::string steck2, std::string steck3, std::string steck4, std::string steck5, std::string steck6, std::string steck7, std::string steck8, std::string steck9, std::string steck10);
+	Enigma(int walze1, int walze2, int walze3, int stellung1, int stellung2, int stellung3, char UKW,std::string steck1, std::string steck2, std::string steck3, std::string steck4, std::string steck5, std::string steck6, std::string steck7, std::string steck8, std::string steck9, std::string steck10);
 
 
 	//Getter*************************************************
@@ -64,6 +67,8 @@ public:
 	int get_stellung1();
 	int get_stellung2();
 	int get_stellung3();
+
+	char get_UKW();
 
 	std::unordered_map<char, char> get_Steck();
 
@@ -76,6 +81,8 @@ public:
 	void set_stellung1(int s1);
 	void set_stellung2(int s2);
 	void set_stellung3(int s3);
+
+	void set_UKW(char UKW);
 
 	void set_Steck(std::string steck1, std::string steck2, std::string steck3, std::string steck4, std::string steck5, std::string steck6, std::string steck7, std::string steck8, std::string steck9, std::string steck10);
 
