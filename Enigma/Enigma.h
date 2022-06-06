@@ -90,7 +90,7 @@ public:
 	*/
 
 	//Funkion die einen string aufbereitet zum kodieren
-	std::string prepare_Input(std::string input);
+	std::string prepare_input(std::string input);
 
 	//Funktion die den kodierungsmechanismus umsetzt
 	std::string encrypt(std::string input);

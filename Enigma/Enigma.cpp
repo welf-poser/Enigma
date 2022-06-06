@@ -66,15 +66,84 @@ std::string Enigma::prepare_input() {
 */
 
 //Funkion die einen string aufbereitet zum kodieren
-std::string Enigma::prepare_Input(std::string input) {
+std::string Enigma::prepare_input(std::string input) {
 	std::string output = "";
 	for (int i = 0; i < input.size(); i++) {
-		if (char(input[i]))
-			//ASCII BULLSHIT
+		if (char(input[i]) >= 97 && char(input[i]) <= 122)
+			output += char(input[i] - 32);
+		else if (char(input[i]) >= 65 && char(input[i]) <= 90)
+			output += char(input[i]);
+
+		switch (char(input[i])) {
+		case '0':
+			output += "NULL";
+			break;
+
+		case '1':
+			output += "EINS";
+			break;
+
+		case '2':
+			output += "ZWEI";
+			break;
+
+		case '3':
+			output += "DREI";
+			break;
+
+		case '4':
+			output += "VIER";
+			break;
+
+		case '5':
+			output += "FUENF";
+			break;
+
+		case '6':
+			output += "SECHS";
+			break;
+
+		case '7':
+			output += "SIEBEN";
+			break;
+
+		case '8':
+			output += "ACHT";
+			break;
+
+		case '9':
+			output += "NEUN";
+			break;
+
+		case 'ü':
+			output += "UE";
+			break;
+
+		case 'Ü':
+			output += "UE";
+			break;
+
+		case 'ö':
+			output += "OE";
+			break;
+		
+		case 'Ö':
+			output += "OE";
+			break;
+
+		case 'ä':
+			output += "AE";
+			break;
+
+		case 'Ä':
+			output += "AE";
+			break;
+		}
 	}
+	return output;
 }
 
 //Funktion die den kodierungsmechanismus umsetzt
 std::string Enigma::encrypt(std::string input) {
-
+	return "";
 }
