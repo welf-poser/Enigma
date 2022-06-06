@@ -58,13 +58,6 @@ void Enigma::einstellungen(int walze1, int walze2, int walze3, int stellung1, in
 	Steck = { {steck1[0],steck1[1]},{steck2[0],steck2[1]},{steck3[0],steck3[1]},{steck4[0],steck4[1]},{steck5[0],steck5[1]},{steck6[0],steck6[1]},{steck7[0],steck7[1]},{steck8[0],steck8[1]},{steck9[0],steck9[1]},{steck10[0],steck10[1]} };
 }
 
-/*
-//Funktion die die Eingabe von der Konsole einließt und aufbereitet zum kodieren
-std::string Enigma::prepare_input() {
-
-}
-*/
-
 //Funkion die einen string aufbereitet zum kodieren
 std::string Enigma::prepare_input(std::string input) {
 	std::string output = "";
@@ -143,7 +136,113 @@ std::string Enigma::prepare_input(std::string input) {
 	return output;
 }
 
+void settings() {
+
+}
 //Funktion die den kodierungsmechanismus umsetzt
 std::string Enigma::encrypt(std::string input) {
-	return "";
+
+	//Prepare input: all Uppercase, remove special characters etc.
+	std::string in = prepare_input(input);
+
+	//Implementation Steckboard
+	for (int i = 0; i < in.size(); i++) {
+
+		if(Steck[in[i]])
+			in[i] = Steck[in[i]];
+	}
+
+	switch (walze1) {
+	case 1:
+
+		break;
+	case 2:
+
+		break;
+	case 3:
+
+		break;
+	case 4:
+
+		break;
+	case 5:
+
+		break;
+	case 6:
+
+		break;
+	case 7:
+
+		break;
+	case 8:
+
+		break;
+	}
+
+	switch (walze2) {
+	case 1:
+
+		break;
+	case 2:
+
+		break;
+	case 3:
+
+		break;
+	case 4:
+
+		break;
+	case 5:
+
+		break;
+	case 6:
+
+		break;
+	case 7:
+
+		break;
+	case 8:
+
+		break;
+	}
+
+	switch (walze3) {
+	case 1:
+
+		break;
+	case 2:
+
+		break;
+	case 3:
+
+		break;
+	case 4:
+
+		break;
+	case 5:
+
+		break;
+	case 6:
+
+		break;
+	case 7:
+
+		break;
+	case 8:
+
+		break;
+	}
+	
+	switch ()
+	std::string out = "";
+	
+	//Output in words of five characters like the actual ciphertext where
+	for (int i = 0; i < in.size(); i++) {
+		if (i % 5 == 0 && i != 0)
+			out += " ";
+
+		out += in[i];
+	}
+
+	return out;
 }

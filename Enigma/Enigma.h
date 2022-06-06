@@ -52,6 +52,7 @@ private:
 public:
 	
 	//Konstruktor********************************************
+	//UKW in Konstruktor mit aufnehmen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	Enigma(int walze1, int walze2, int walze3, int stellung1, int stellung2, int stellung3, std::string steck1, std::string steck2, std::string steck3, std::string steck4, std::string steck5, std::string steck6, std::string steck7, std::string steck8, std::string steck9, std::string steck10);
 
 
@@ -83,11 +84,6 @@ public:
 	
 	//Funktion zum ‰ndern der Einstellungen nachdem die Enigma-Klasse erstellt wurde
 	void einstellungen(int walze1, int walze2, int walze3, int stellung1, int stellung2, int stellung3, std::string steck1, std::string steck2, std::string steck3, std::string steck4, std::string steck5, std::string steck6, std::string steck7, std::string steck8, std::string steck9, std::string steck10);
-	
-	/*
-	//Funktion die die Eingabe von der Konsole einlieﬂt und aufbereitet zum kodieren
-	std::string prepare_input();
-	*/
 
 	//Funkion die einen string aufbereitet zum kodieren
 	std::string prepare_input(std::string input);
