@@ -142,10 +142,7 @@ std::string Enigma::prepare_input(std::string input) {
 	return output;
 }
 
-void settings() {
-
-}
-//Funktion die den kodierungsmechanismus umsetzt
+//Funktion for encoding or decoding a string
 std::string Enigma::encrypt(std::string input) {
 
 	//Prepare input: all Uppercase, remove special characters etc.
@@ -158,95 +155,85 @@ std::string Enigma::encrypt(std::string input) {
 			in[i] = Steck[in[i]];
 	}
 
+	//UKW and Walze Index from left to right: UKW, Walze 3, Walze 2, Walze 1, Steckboard.
+	/*
+	Cipher flow
+	UKW <- Walze 3 <- Walze 2 <- Walze 1 <- Steckboard <-!!Input starts here!!
+				!Mind the notches/turnovers and ringsetting and so on!
+	UKW -> Walze 3 -> Walze 2 -> Walze 1 -> Steckboard ->Output
+	*/
+
+	//Initialize which Rotors are selected
+	const char* rotor1;
+	const char* rotor2;
+	const char* rotor3;
+	const std::unordered_map<char,char> UKW_selected;
+
 	switch (walze1) {
 	case 1:
-
+		rotor1 = WalzeNo1;
 		break;
 	case 2:
-
+		rotor1 = WalzeNo2;
 		break;
 	case 3:
-
+		rotor1 = WalzeNo3;
 		break;
 	case 4:
-
+		rotor1 = WalzeNo4;
 		break;
 	case 5:
-
-		break;
-	case 6:
-
-		break;
-	case 7:
-
-		break;
-	case 8:
-
+		rotor1 = WalzeNo5;
 		break;
 	}
 
 	switch (walze2) {
 	case 1:
-
+		rotor2 = WalzeNo1;
 		break;
 	case 2:
-
+		rotor2 = WalzeNo2;
 		break;
 	case 3:
-
+		rotor2 = WalzeNo3;
 		break;
 	case 4:
-
+		rotor2 = WalzeNo4;
 		break;
 	case 5:
-
-		break;
-	case 6:
-
-		break;
-	case 7:
-
-		break;
-	case 8:
-
+		rotor2 = WalzeNo5;
 		break;
 	}
 
 	switch (walze3) {
 	case 1:
-
+		rotor3 = WalzeNo1;
 		break;
 	case 2:
-
+		rotor3 = WalzeNo2;
 		break;
 	case 3:
-
+		rotor3 = WalzeNo3;
 		break;
 	case 4:
-
+		rotor3 = WalzeNo4;
 		break;
 	case 5:
-
-		break;
-	case 6:
-
-		break;
-	case 7:
-
-		break;
-	case 8:
-
+		rotor3 = WalzeNo5;
 		break;
 	}
 	
 	switch (UKW) {
 	case 'A':
+		UKW_selected = &(this->UKW_A);
 		break;
 
 	case 'B':
+		UKW_selected = UKW_B;
 		break;
 
 	case 'C':
+		UKW_selected = UKW_C;
 		break;
 	}
 
