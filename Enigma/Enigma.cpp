@@ -167,7 +167,7 @@ std::string Enigma::encrypt(std::string input) {
 	const char* rotor1;
 	const char* rotor2;
 	const char* rotor3;
-	const std::unordered_map<char,char> UKW_selected;
+	const std::unordered_map<char,char>* UKW_selected;
 
 	switch (walze1) {
 	case 1:
@@ -229,11 +229,11 @@ std::string Enigma::encrypt(std::string input) {
 		break;
 
 	case 'B':
-		UKW_selected = UKW_B;
+		UKW_selected = &(this->UKW_B);
 		break;
 
 	case 'C':
-		UKW_selected = UKW_C;
+		UKW_selected = &(this->UKW_C);
 		break;
 	}
 
