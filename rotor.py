@@ -69,6 +69,9 @@ class Rotor:
             raise ValueError("Invalid Rotor-Typ: " + rotor_type)
         
         self.rotor = self.rotors[rotor_type]
+        self.inverse_rotor = {}
+        for key, value in self.rotor.items():
+            self.inverse_rotor[value] = key
         
     def print_rotor(self):
         print("Rotor-Type: " + str(self.rotor_type))
@@ -76,3 +79,17 @@ class Rotor:
         for key, value in self.rotor.items():
             print(key + " : " + value)
         print("\n")
+
+    def swap(self, letter):
+        letter = letter.upper()
+        return self.rotor[letter]
+    
+    def reverse_swap(self, letter):
+        letter.upper()
+        return self.inverse_rotor[letter]
+    
+    def get_rotor(self):
+        return self.rotor
+    
+    def get_inv_rotor(self):
+        return self.inverse_rotor

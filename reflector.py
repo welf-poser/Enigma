@@ -27,6 +27,8 @@ class Reflector:
     
     def __init__(self, reflector_type = "A" ):
 
+        reflector_type = reflector_type.upper()
+
         self.reflector_type = reflector_type
 
         if reflector_type not in self.reflectors:
@@ -34,11 +36,16 @@ class Reflector:
 
         self.reflector = self.reflectors[reflector_type]
 
-
-        
     def print_reflector(self):
         print("Reflector-Typ: " + str(self.reflector_type))
 
         for key, value in self.reflector.items():
             print(key + " : " + value)
         print("\n")
+
+    def swap(self, letter):
+        letter = letter.upper()
+        return self.reflector[letter]
+    
+    def get_reflector(self):
+        return self.reflector
