@@ -1,0 +1,10 @@
+Stage 1:
+-rename project to cracking-enigma or sth else
+-implement testcases for all functionality
+-implement and test enigma class
+-document everything
+-code review with dennis or chatgpt
+
+Stage 2:
+-research on how to cracking enigma (AI, Numberfile Video)
+-plan further steps on how and what to implement

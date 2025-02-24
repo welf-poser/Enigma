@@ -1,8 +1,11 @@
 from rotor import Rotor
 from reflector import Reflector
+from plugboard import Plugboard
 
-w1 = Rotor(1)
-ukw1 = Reflector("A")
+plugboard = Plugboard({"A":"b", "c":"D", "e":"f", "G":"H"})
 
-w1.print_rotor()
-ukw1.print_reflector()
+plugboard.print_plugboard()
+
+plugboard.unplug("D")
+
+plugboard.print_plugboard()
