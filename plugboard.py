@@ -1,5 +1,13 @@
 class Plugboard:
     def __init__(self, connections):
+        #evtl. noch check der lower case Buchstaben in Upper umwandelt
+        for key, value in connections:
+            if key.islower():
+                connections.update({key.upper()  :value})
+                connections.pop(key)
+            if value.islower():
+                connections.pop(key)
+                connections.update({key : value.upper()})
 
         if len(connections) > 10:
             raise ValueError("Too many connections: " + str(len(connections.items())))
@@ -8,6 +16,8 @@ class Plugboard:
 
             for key, value in connections:
                 self.connections[value] = key
+    def get_connections(self):
+        return self.connections
 
     def swap(self, letter):
 
@@ -35,6 +45,10 @@ class Plugboard:
             print("The letter " + letter + " wasn´t plugged")
 
     def plug(self, letter1, letter2):
+        if letter1 == letter2:
+            print("Letters must not be equal!")
+            return
+        
         if letter1 in self.connections.keys():
 
             print("Letters " + letter1 + " <-> " + self.connections[letter1] + " unplugged")
