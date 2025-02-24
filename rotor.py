@@ -58,12 +58,25 @@ class Rotor:
             }
 
     }
+
+    notches = {
+        1 : ["Q"], # Dreht bei Q zu R
+        2 : ["E"],
+        3 : ["V"],
+        4 : ["J"],
+        5 : ["Z"],
+        6 : ["Z", 'M'],
+        7 : ["Z", 'M'],
+        8 : ["Z", 'M'],
+
+    }
     
     
     
     def __init__(self, rotor_type):
  
         self.rotor_type = rotor_type
+        self.notch = self.notches[rotor_type]
 
         if rotor_type not in self.rotors:
             raise ValueError("Invalid Rotor-Typ: " + rotor_type)
@@ -93,3 +106,6 @@ class Rotor:
     
     def get_inv_rotor(self):
         return self.inverse_rotor
+    
+    def get_notch(self):
+        return self.notch

@@ -1,7 +1,10 @@
 Stage 1:
--rename project to cracking-enigma or sth else
--implement testcases for all functionality
+-rotor Klasse überarbeiten
+    dict in zwei listen damit man verschoben nach Ringsetting auf die Pos zugreifen kann.
+    Ringsetting in rotor mir aufnehmen
+
 -implement and test enigma class
+    enigma parameter init_pos1 usw mit übergeben
 -document everything
 -code review with dennis or chatgpt
 

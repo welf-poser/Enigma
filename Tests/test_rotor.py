@@ -46,3 +46,10 @@ def test_get_rotor():
 def test_reverse_swap():
     rotor = Rotor(1)
     assert rotor.reverse_swap("A") == "U"
+
+def test_get_notch():
+    rotor = Rotor(1)
+    assert rotor.get_notch() == ["Q"]
+
+    rotor = Rotor(7)
+    assert rotor.get_notch() == ["Z", "M"]
