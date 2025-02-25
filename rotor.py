@@ -73,22 +73,34 @@ class Rotor:
     
     
     
-    def __init__(self, rotor_type):
- 
+    def __init__(self, rotor_type, ring_setting):
+        
+        if rotor_type not in self.rotors:
+            raise ValueError("Invalid Rotor-Typ: " + str(rotor_type))
+
+        if ring_setting < 0 or ring_setting > 26:
+            raise ValueError("Invalid Ring-Setting: " + str(ring_setting))
+
         self.rotor_type = rotor_type
         self.notch = self.notches[rotor_type]
+        self.ring_setting = ring_setting
 
-        if rotor_type not in self.rotors:
-            raise ValueError("Invalid Rotor-Typ: " + rotor_type)
-        
-        self.rotor = self.rotors[rotor_type]
+        self.rotor = {}
+
+        self.rotor = {}
         self.inverse_rotor = {}
-        for key, value in self.rotor.items():
-            self.inverse_rotor[value] = key
+
+
+        for key, value in self.rotors[rotor_type].items():
+            new_key = chr(((ord(key) - ord("A") + ring_setting - 1) % 26) + ord("A"))
+            self.rotor[new_key] = value
+            self.inverse_rotor[value] = new_key  
+
+
         
     def print_rotor(self):
         print("Rotor-Type: " + str(self.rotor_type))
-
+        print("Ring-Setting: " + str(self.ring_setting))
         for key, value in self.rotor.items():
             print(key + " : " + value)
         print("\n")
