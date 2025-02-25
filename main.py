@@ -2,10 +2,16 @@ from rotor import Rotor
 from reflector import Reflector
 from plugboard import Plugboard
 
-plugboard = Plugboard({"A":"b", "c":"D", "e":"f", "G":"H"})
 
-plugboard.print_plugboard()
+i = 1
+while i < 9:
+    rotor = Rotor(i) 
 
-plugboard.unplug("D")
+    vals = []
+    for key, value in rotor.get_rotor().items():
+        vals.append(value)
+    
+    print("Rotor: " + str(i))
+    print(vals)
 
-plugboard.print_plugboard()
+    i+=1
