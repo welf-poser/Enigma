@@ -1,5 +1,7 @@
 Stage 1:
 
+-Rework tests for Rotor and develope tests for Enigma
+
 -implement and test enigma class
     enigma parameter init_pos1 usw mit übergeben
 -document everything
