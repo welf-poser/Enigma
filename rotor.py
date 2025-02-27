@@ -79,7 +79,7 @@ class Rotor:
         if rotor_type not in self.rotors:
             raise ValueError("Invalid Rotor-Typ: " + str(rotor_type))
 
-        if ring_setting < 0 or ring_setting > 26:
+        if ring_setting < 1 or ring_setting > 26:
             raise ValueError("Invalid Ring-Setting: " + str(ring_setting))
 
         self.rotor_type = rotor_type

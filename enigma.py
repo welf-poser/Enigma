@@ -1,7 +1,7 @@
 #Wehrmacht Enigma I (M3)
 
 class Enigma:
-    def __init__(self, reflector, rotor1, pos1, rotor2, pos2, rotor3, pos3, plugboard):
+    def __init__(self, reflector, rotor3, pos3, rotor2, pos2, rotor1, pos1, plugboard):
         self.reflector = reflector
         self.rotor1 = rotor1
         self.rotor2 = rotor2
@@ -48,48 +48,50 @@ class Enigma:
 
             print("Keyboard Input: " + char)
 
-            self.pos3 = (self.pos3 % 26) + 1
+            self.pos1 = (self.pos1 % 26) + 1
 
-            if self.pos3 in self.rotor3.get_notch():
+            print(self.rotor1.get_notch())
+            if self.pos1 in self.rotor1.get_notch():
+
                 self.pos2 = (self.pos2 % 26) + 1
 
                 # Double Step Mechanismus für den mittleren Rotor
                 if self.pos2 in self.rotor2.get_notch():
                     self.pos2 = (self.pos2 % 26) + 1
-                    self.pos1 = (self.pos1 % 26) + 1
+                    self.pos3 = (self.pos3 % 26) + 1
 
-            print("Rotors Position: " + chr(self.pos1 + 64) + ", " +
-                chr(self.pos2 + 64) + ", " + chr(self.pos3 + 64))
+            print("Rotors Position: " + chr(self.pos3 + 64) + ", " +
+                chr(self.pos2 + 64) + ", " + chr(self.pos1 + 64))
 
             # Verschlüsselungsschritt:
             char = self.plugboard.swap(char)
             print("Plugboard Encryption: " + char)
 
-            char = self.rotor3.swap(chr(((ord(char) - ord("A") + self.pos3) % 26) + ord("A")))
-            print("Wheel 3 Encryption: " + char)
+            print(self.pos1)
+            print(ord(char) + self.pos1)
+            char = self.rotor1.swap(chr(ord(char) + self.pos1 -1))
+            print("Wheel 1 Encryption: " + char)
 
-            char = self.rotor2.swap(chr(((ord(char) - ord("A") + self.pos2) % 26) + ord("A")))
+            char = self.rotor2.swap(chr(ord(char) + self.pos2 -1))
             print("Wheel 2 Encryption: " + char)
 
-            char = self.rotor1.swap(chr(((ord(char) - ord("A") + self.pos1) % 26) + ord("A")))
-            print("Wheel 1 Encryption: " + char)
+            char = self.rotor3.swap(chr(ord(char) + self.pos3 -1))
+            print("Wheel 3 Encryption: " + char)
 
             char = self.reflector.swap(char)  # Reflektor bleibt unverändert
             print("Reflector Encryption: " + char)
 
-            # Rückweg: Hier wird die Positionsverschiebung rückgängig gemacht,
-            # aber auch hier keine erneute Berücksichtigung der ring_setting, da diese schon eingearbeitet wurde.
-            char = chr(((ord(char) - ord("A") - self.pos1) % 26) + ord("A"))
-            char = self.rotor1.reverse_swap(char)
-            print("Wheel 1 Reverse Encryption: " + char)
 
-            char = chr(((ord(char) - ord("A") - self.pos2) % 26) + ord("A"))
-            char = self.rotor2.reverse_swap(char)
+            char = self.rotor1.reverse_swap(chr(ord(char) + self.pos3 -1))
+            print("Wheel 3 Reverse Encryption: " + char)
+
+
+            char = self.rotor2.reverse_swap(chr(ord(char) + self.pos3 -1))
             print("Wheel 2 Reverse Encryption: " + char)
 
-            char = chr(((ord(char) - ord("A") - self.pos3) % 26) + ord("A"))
-            char = self.rotor3.reverse_swap(char)
-            print("Wheel 3 Reverse Encryption: " + char)
+ 
+            char = self.rotor3.reverse_swap(chr(ord(char) + self.pos3 -1))
+            print("Wheel 1 Reverse Encryption: " + char)
 
             char = self.plugboard.swap(char)
             print("Plugboard Encryption: " + char)
@@ -98,9 +100,6 @@ class Enigma:
             msg_encrypt += char
 
         return msg_encrypt
-
-
-
 
 
     def decrypt(self, msg):
