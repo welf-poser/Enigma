@@ -26,7 +26,7 @@ enigma = Enigma(reflector, rotor3, 1, rotor2, 1, rotor1, 1, plugboard,)
 
 orig_msg = ("The crucial point is: by changing ourselves, we change the world. As we become more loving on the inside, healing occurs on the outside. Much like the rising of the sea level lifts all ships, so the radiance of unconditional love within a human heart lifts all of life!")
 
-test = "AA"
+test = "AAA"
 
 encrypt_msg = enigma.encrypt(test)
 

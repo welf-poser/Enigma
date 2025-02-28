@@ -82,15 +82,15 @@ class Enigma:
             print("Reflector Encryption: " + char)
 
 
-            char = self.rotor1.reverse_swap(chr(ord(char) + self.pos3 -1))
+            char = self.rotor3.reverse_swap(chr(ord(char) + self.pos3 -1))
             print("Wheel 3 Reverse Encryption: " + char)
 
 
-            char = self.rotor2.reverse_swap(chr(ord(char) + self.pos3 -1))
+            char = self.rotor2.reverse_swap(chr(ord(char) + self.pos2 -1))
             print("Wheel 2 Reverse Encryption: " + char)
 
  
-            char = self.rotor3.reverse_swap(chr(ord(char) + self.pos3 -1))
+            char = self.rotor1.reverse_swap(chr(ord(char) + self.pos1 -1))
             print("Wheel 1 Reverse Encryption: " + char)
 
             char = self.plugboard.swap(char)
