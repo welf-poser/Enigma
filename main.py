@@ -4,16 +4,16 @@ from plugboard import Plugboard
 from enigma import Enigma
 
 plugboard = Plugboard({
-                        "B":"Q", 
-                        "C":"R",
-                        "D":"I",
-                        "E":"J",
-                        "K":"W",
-                        "M":"T",
-                        "O":"S",
-                        "P":"X",
-                        "U":"Z",
-                        "G":"H"
+                        #"B":"Q", 
+                        #"C":"R",
+                        #"D":"I",
+                        #"E":"J",
+                        #"K":"W",
+                        #"M":"T",
+                        #"O":"S",
+                        #"P":"X",
+                        #"U":"Z",
+                        #"G":"H"
                     })
 
 rotor1 = Rotor(1, 1)
@@ -31,3 +31,5 @@ test = "AAA"
 encrypt_msg = enigma.encrypt(test)
 
 print(encrypt_msg)
+
+enigma.encrypt(encrypt_msg)

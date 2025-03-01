@@ -2,11 +2,40 @@ class Rotor:
     
     rotors = {
         1 : {
-                "A": "E", "B": "K", "C": "M", "D": "F", "E": "L", "F": "G", "G": "D", "H": "Q",
-                "I": "V", "J": "Z", "K": "N", "L": "T", "M": "O", "N": "W", "O": "Y", "P": "H",
-                "Q": "X", "R": "U", "S": "S", "T": "P", "U": "A", "V": "I", "W": "B", "X": "R",
-                "Y": "C", "Z": "J"
+                "A": "E", # 1
+                "B": "K", # 2
+                "C": "M", # 3
+                "D": "F", # 4
+                "E": "L", # 5
+                "F": "G", # 6
+                "G": "D", # 7
+                "H": "Q", # 8
+                "I": "V", # 9
+                "J": "Z", #10
+                "K": "N", #11
+                "L": "T", #12
+                "M": "O", #13
+                "N": "W", #14
+                "O": "Y", #15
+                "P": "H", #16
+                "Q": "X", #17
+                "R": "U", #18
+                "S": "S", #19
+                "T": "P", #20
+                "U": "A", #21
+                "V": "I", #22
+                "W": "B", #23
+                "X": "R", #24
+                "Y": "C", #25
+                "Z": "J"  #26
             },
+                # K W1 Verschoben!
+                # N W2
+                # W W3 
+                # V UKW
+                # I W3 reverse
+                # V W2 reverse
+                # Z W1 reverse Verschoben!
 
         2 : {
                 "A": "A", "B": "J", "C": "D", "D": "K", "E": "S", "F": "I", "G": "R", "H": "U",
@@ -84,7 +113,7 @@ class Rotor:
 
         self.rotor_type = rotor_type
         self.notch = self.notches[rotor_type]
-        self.ring_setting = ring_setting
+        self.ring_setting = ring_setting -1
 
         self.rotor = {}
 
@@ -93,7 +122,8 @@ class Rotor:
 
 
         for key, value in self.rotors[rotor_type].items():
-            new_key = chr(((ord(key) - ord("A") + ring_setting - 1) % 26) + ord("A"))
+            #new_key = chr(((ord(key) - ord("A") + ring_setting - 1) % 26) + ord("A"))
+            new_key = chr((ord(key) + self.ring_setting))
             self.rotor[new_key] = value
             self.inverse_rotor[value] = new_key  
 
@@ -106,14 +136,25 @@ class Rotor:
             print(key + " : " + value)
         print("\n")
 
-    def swap(self, letter):
+    def swap(self, letter, pos):
         letter = letter.upper()
+        letter = chr(ord(letter) + pos)
         return self.rotor[letter]
-    
-    def reverse_swap(self, letter):
+
+
+
+    def reverse_swap(self, letter, pos):
         letter.upper()
+        letter = chr(ord(letter) - pos)
         return self.inverse_rotor[letter]
-    
+
+    """
+    def reverse_swap(self, letter, pos):
+        letter = letter.upper()
+        new_ord = (ord(letter) - ord("A") - pos) % 26 + ord("A")
+        new_letter = chr(new_ord)
+        return self.inverse_rotor[new_letter]
+    """
     def get_rotor(self):
         return self.rotor
     

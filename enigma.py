@@ -8,9 +8,9 @@ class Enigma:
         self.rotor3 = rotor3
         self.plugboard = plugboard
 
-        self.pos1 = pos1
-        self.pos2 = pos2
-        self.pos3 = pos3
+        self.pos1 = pos1 -1
+        self.pos2 = pos2 -1
+        self.pos3 = pos3 -1
 
         """
         initial_settings = {
@@ -50,7 +50,6 @@ class Enigma:
 
             self.pos1 = (self.pos1 % 26) + 1
 
-            print(self.rotor1.get_notch())
             if self.pos1 in self.rotor1.get_notch():
 
                 self.pos2 = (self.pos2 % 26) + 1
@@ -60,37 +59,37 @@ class Enigma:
                     self.pos2 = (self.pos2 % 26) + 1
                     self.pos3 = (self.pos3 % 26) + 1
 
-            print("Rotors Position: " + chr(self.pos3 + 64) + ", " +
-                chr(self.pos2 + 64) + ", " + chr(self.pos1 + 64))
+            print("Rotors Position: " + chr(self.pos3 + 65) + ", " +
+                chr(self.pos2 + 65) + ", " + chr(self.pos1 + 65))
 
             # Verschlüsselungsschritt:
             char = self.plugboard.swap(char)
             print("Plugboard Encryption: " + char)
 
-            print(self.pos1)
-            print(ord(char) + self.pos1)
-            char = self.rotor1.swap(chr(ord(char) + self.pos1 -1))
+
+            char = self.rotor1.swap(char, self.pos1)
             print("Wheel 1 Encryption: " + char)
 
-            char = self.rotor2.swap(chr(ord(char) + self.pos2 -1))
+            char = self.rotor2.swap(char, self.pos2)
             print("Wheel 2 Encryption: " + char)
 
-            char = self.rotor3.swap(chr(ord(char) + self.pos3 -1))
+            char = self.rotor3.swap(char, self.pos3)
             print("Wheel 3 Encryption: " + char)
+
 
             char = self.reflector.swap(char)  # Reflektor bleibt unverändert
             print("Reflector Encryption: " + char)
 
 
-            char = self.rotor3.reverse_swap(chr(ord(char) + self.pos3 -1))
+            char = self.rotor3.reverse_swap(char, self.pos3)
             print("Wheel 3 Reverse Encryption: " + char)
 
 
-            char = self.rotor2.reverse_swap(chr(ord(char) + self.pos2 -1))
+            char = self.rotor2.reverse_swap(char, self.pos2)
             print("Wheel 2 Reverse Encryption: " + char)
 
  
-            char = self.rotor1.reverse_swap(chr(ord(char) + self.pos1 -1))
+            char = self.rotor1.reverse_swap(char, self.pos1)
             print("Wheel 1 Reverse Encryption: " + char)
 
             char = self.plugboard.swap(char)
