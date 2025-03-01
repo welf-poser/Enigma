@@ -29,13 +29,7 @@ class Rotor:
                 "Y": "C", #25
                 "Z": "J"  #26
             },
-                # K W1 Verschoben!
-                # N W2
-                # W W3 
-                # V UKW
-                # I W3 reverse
-                # V W2 reverse
-                # Z W1 reverse Verschoben!
+
 
         2 : {
                 "A": "A", "B": "J", "C": "D", "D": "K", "E": "S", "F": "I", "G": "R", "H": "U",
@@ -87,7 +81,7 @@ class Rotor:
             }
 
     }
-
+    #PRÜFEN OB FALSCH!!!!!!!!!!!!!!!!!!!!!!!!
     notches = {
 
         1 : [17], # Q
@@ -104,28 +98,28 @@ class Rotor:
     
     
     def __init__(self, rotor_type, ring_setting):
-        
         if rotor_type not in self.rotors:
             raise ValueError("Invalid Rotor-Typ: " + str(rotor_type))
-
         if ring_setting < 1 or ring_setting > 26:
             raise ValueError("Invalid Ring-Setting: " + str(ring_setting))
-
+        
         self.rotor_type = rotor_type
         self.notch = self.notches[rotor_type]
-        self.ring_setting = ring_setting -1
 
-        self.rotor = {}
+        offset = ring_setting - 1  
+        self.ring_setting = offset
 
-        self.rotor = {}
-        self.inverse_rotor = {}
 
+        self.rotor = [None] * 26
+        self.inverse_rotor = [None] * 26
 
         for key, value in self.rotors[rotor_type].items():
-            #new_key = chr(((ord(key) - ord("A") + ring_setting - 1) % 26) + ord("A"))
-            new_key = chr((ord(key) + self.ring_setting))
-            self.rotor[new_key] = value
-            self.inverse_rotor[value] = new_key  
+
+            idx = (ord(key) - ord("A") + offset) % 26
+            self.rotor[idx] = value  
+            
+            inv_idx = (ord(value) - ord("A") + offset) % 26
+            self.inverse_rotor[inv_idx] = key
 
 
         
@@ -137,15 +131,12 @@ class Rotor:
         print("\n")
 
     def swap(self, letter, pos):
-        letter = letter.upper()
-        letter = chr(ord(letter) + pos)
+        letter = (ord(letter.upper()) - 64 + pos) % 25
         return self.rotor[letter]
 
 
-
     def reverse_swap(self, letter, pos):
-        letter.upper()
-        letter = chr(ord(letter) - pos)
+        letter = (ord(letter.upper()) - 64 + pos) % 25
         return self.inverse_rotor[letter]
 
     """

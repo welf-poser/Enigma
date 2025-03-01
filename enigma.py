@@ -50,6 +50,7 @@ class Enigma:
 
             self.pos1 = (self.pos1 % 26) + 1
 
+            #Pos stimmt wahrscheinlich nicht mehr durch -1 !!!!!!!!!!!!!!!!!!!!!!!!!!!
             if self.pos1 in self.rotor1.get_notch():
 
                 self.pos2 = (self.pos2 % 26) + 1

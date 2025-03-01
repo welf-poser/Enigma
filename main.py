@@ -32,4 +32,11 @@ encrypt_msg = enigma.encrypt(test)
 
 print(encrypt_msg)
 
-enigma.encrypt(encrypt_msg)
+encrypt_msg = enigma.encrypt(encrypt_msg)
+print(encrypt_msg)
+
+"""
+    A -> D
+    AA -> NZ
+    AAA -> AYA
+"""
