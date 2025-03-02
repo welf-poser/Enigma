@@ -29,6 +29,9 @@ class Rotor:
                 "Y": "C", #25
                 "Z": "J"  #26
             },
+                # A->K
+                # K->N
+                # N->W
 
 
         2 : {
@@ -131,14 +134,16 @@ class Rotor:
         print("\n")
 
     def swap(self, letter, pos):
-        letter = (ord(letter.upper()) - 64 + pos) % 25
+        print("Pos in swap " + str(pos))
+        letter = (ord(letter.upper()) - 65 + pos) % 25
         return self.rotor[letter]
 
 
     def reverse_swap(self, letter, pos):
-        letter = (ord(letter.upper()) - 64 + pos) % 25
+        print("Pos in swap " + str(pos))
+        letter = (ord(letter.upper()) - 65 + pos) % 25
         return self.inverse_rotor[letter]
-
+        #Maybe Bug here??
     """
     def reverse_swap(self, letter, pos):
         letter = letter.upper()

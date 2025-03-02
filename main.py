@@ -28,10 +28,12 @@ orig_msg = ("The crucial point is: by changing ourselves, we change the world. A
 
 test = "AAA"
 
+print(enigma.rotor1.rotor)
+print(enigma.rotor1.inverse_rotor)
 encrypt_msg = enigma.encrypt(test)
-
 print(encrypt_msg)
 
+enigma = Enigma(reflector, rotor3, 1, rotor2, 1, rotor1, 1, plugboard,)
 encrypt_msg = enigma.encrypt(encrypt_msg)
 print(encrypt_msg)
 
