@@ -1,7 +1,7 @@
 class Rotor:
     
     rotors = {
-        1 : {
+        1 : {   #Umkehren!!
                 "A": "E", # 1
                 "B": "K", # 2
                 "C": "M", # 3
