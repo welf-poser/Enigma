@@ -1,37 +1,44 @@
 class Rotor:
     
     rotors = {
-        1 : {#["E","K","M","F","L","G","D","Q","V","Z","N","T","O","W","Y","H","X","U","S","P","A","I","B","R","C","J"]
-                
-                5 : 1,
-                "K": 2,
-                "M": 3,
-                "F": 4,
-                "L": 5,
-                "G": 6,
-                "D": 7,
-                "Q": 8,
-                "V": 9,
-                "Z": 10,
-                "N": 11,
-                "T": 12,
-                "O": 13,
-                "W": 14,
-                "Y": 15,
-                "H": 16,
-                "X": 17,
-                "U": 18,
-                "S": 19,
-                "P": 20,
-                "A": 21,
-                "I": 22,
-                "B": 23,
-                "R": 24,
-                "C": 25,
-                "J": 26
-            },
+        1 : [
+            
+            [5, 11, 13, 6, 12, 7, 4, 17, 22, 26, 14, 20, 15, 23, 25, 8, 24, 21, 19, 16, 1, 9, 2, 18, 3, 10]
 
-        2 : {
+            ,{
+                "E": "A",
+                "K": "B",
+                "M": "C",
+                "F": "D",
+                "L": "E",
+                "G": "F",
+                "D": "G",
+                "Q": "H",
+                "V": "I",
+                "Z": "J",
+                "N": "K",
+                "T": "L",
+                "O": "M",
+                "W": "N",
+                "Y": "O",
+                "H": "P",
+                "X": "Q",
+                "U": "R",
+                "S": "S",
+                "P": "T",
+                "A": "U",
+                "I": "V",
+                "B": "W",
+                "R": "X",
+                "C": "Y",
+                "J": "Z"
+            }],
+
+        2 : [
+            
+            [1, 10, 4, 11, 19, 9, 18, 21, 24, 2, 12, 8, 23, 20, 13, 3, 17, 7, 26, 14, 16, 25, 6, 22, 15, 5],
+            
+            {
                 "A": "A",
                 "J": "B",
                 "D": "C",
@@ -58,9 +65,13 @@ class Rotor:
                 "V": "X",
                 "O": "Y",
                 "E": "Z"
-},
+            }],
 
-        3 :  {
+        3 :  [
+
+            [2, 4, 6, 8, 10, 12, 3, 16, 18, 20, 24, 22, 26, 14, 25, 5, 9, 23, 7, 1, 11, 13, 21, 19, 17, 15]
+        
+            ,{
                 "B": "A",
                 "D": "B",
                 "F": "C",
@@ -87,9 +98,13 @@ class Rotor:
                 "S": "X",
                 "Q": "Y",
                 "O": "Z"
-},
+            }],
 
-        4 : {
+        4 : [
+        
+            [5, 19, 15, 22, 16, 26, 10, 1, 25, 17, 21, 9, 18, 8, 24, 12, 14, 6, 20, 7, 11, 4, 3, 13, 23, 2]
+        
+            ,{
                 "E": "A", 
                 "S": "B", 
                 "O": "C",  
@@ -116,9 +131,13 @@ class Rotor:
                 "M": "X",  
                 "W": "Y",  
                 "B": "Z"  
-},
+            }],
 
-        5 : {
+        5 : [
+        
+            [22, 26, 2, 18, 7, 9, 20, 25, 21, 16, 19, 4, 14, 8, 12, 24, 1, 23, 13, 10, 17, 15, 6, 5, 3, 11]
+        
+            ,{
                 "V": "A",
                 "Z": "B",
                 "B": "C",
@@ -145,9 +164,13 @@ class Rotor:
                 "E": "X",
                 "C": "Y",
                 "K": "Z"
-},
+            }],
 
-        6 : {
+        6 : [
+        
+            [10, 16, 7, 22, 15, 21, 13, 6, 25, 17, 2, 5, 14, 8, 26, 18, 4, 11, 1, 19, 24, 12, 9, 3, 20, 23]
+        
+            ,{
                 "J": "A",
                 "P": "B",
                 "G": "C",
@@ -174,9 +197,13 @@ class Rotor:
                 "C": "X",
                 "T": "Y",
                 "W": "Z"
-},
+            }],
 
-        7 : {
+        7 : [
+        
+            [14, 26, 8, 7, 18, 3, 24, 13, 25, 19, 23, 2, 15, 21, 6, 1, 9, 22, 12, 16, 10, 11, 4, 5, 20, 17]
+            
+            ,{
                 "N": "A",
                 "Z": "B",
                 "H": "C",
@@ -203,9 +230,13 @@ class Rotor:
                 "E": "X",
                 "T": "Y",
                 "Q": "Z"
-},
+            }],
 
-        8 : {
+        8 : [
+        
+            [6, 11, 17, 8, 20, 12, 24, 15, 3, 2, 10, 19, 16, 4, 26, 18, 1, 13, 5, 23, 14, 9, 21, 25, 7, 22]
+        
+        ,   {
                 "F": "A",
                 "K": "B",
                 "Q": "C",
@@ -232,7 +263,7 @@ class Rotor:
                 "Y": "X",
                 "G": "Y",
                 "V": "Z"
-}
+}]
 
     }
     
@@ -263,45 +294,18 @@ class Rotor:
         offset = ring_setting - 1  
         self.ring_setting = offset
 
-
-        self.rotor = [None] * 26
-        self.inverse_rotor = [None] * 26
-
-        for key, value in self.rotors[rotor_type].items():
-
-            idx = (ord(key) - ord("A") + offset) % 26
-            self.rotor[idx] = value  
-            
-            inv_idx = (ord(value) - ord("A") + offset) % 26
-            self.inverse_rotor[inv_idx] = key
-
+        
 
         
-    def print_rotor(self):
-        print("Rotor-Type: " + str(self.rotor_type))
-        print("Ring-Setting: " + str(self.ring_setting))
-        for key, value in self.rotor.items():
-            print(key + " : " + value)
-        print("\n")
-
-    def swap(self, letter, pos):
-        print("Pos in swap " + str(pos))
-        letter = (ord(letter.upper()) - 65 + pos) % 25
-        return self.rotor[letter]
+    #def print_rotor(self):
 
 
-    def reverse_swap(self, letter, pos):
-        print("Pos in swap " + str(pos))
-        letter = (ord(letter.upper()) - 65 + pos) % 25
-        return self.inverse_rotor[letter]
-        #Maybe Bug here??
-    """
-    def reverse_swap(self, letter, pos):
-        letter = letter.upper()
-        new_ord = (ord(letter) - ord("A") - pos) % 26 + ord("A")
-        new_letter = chr(new_ord)
-        return self.inverse_rotor[new_letter]
-    """
+    #def swap(self, letter, pos):
+
+
+    #def reverse_swap(self, letter, pos):
+
+
     def get_rotor(self):
         return self.rotor
     
