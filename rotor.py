@@ -290,6 +290,7 @@ class Rotor:
         
         self.rotor_type = rotor_type
         self.notch = self.notches[rotor_type]
+        self.rotor = self.rotors[rotor_type]
 
         offset = ring_setting - 1  
         self.ring_setting = offset
@@ -300,7 +301,10 @@ class Rotor:
     #def print_rotor(self):
 
 
-    #def swap(self, letter, pos):
+    def swap(self, letter, pos):
+        letter = ord(letter) + pos
+        list = self.rotor[0]
+        return list[(letter-65)%25]
 
 
     #def reverse_swap(self, letter, pos):
