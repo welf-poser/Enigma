@@ -1,103 +1,23 @@
 class Reflector:
     
     reflectors = {
-        "A" : {
-                "E": "A",
-                "J": "B",
-                "M": "C",
-                "Z": "D",
-                "A": "E",
-                "L": "F",
-                "Y": "G",
-                "X": "H",
-                "V": "I",
-                "B": "J",
-                "W": "K",
-                "F": "L",
-                "C": "M",
-                "R": "N",
-                "Q": "O",
-                "U": "P",
-                "O": "Q",
-                "N": "R",
-                "T": "S",
-                "S": "T",
-                "P": "U",
-                "I": "V",
-                "K": "W",
-                "H": "X",
-                "G": "Y",
-                "D": "Z"
-},
 
-        "B" : {
-                "Y": "A",
-                "R": "B",
-                "U": "C",
-                "H": "D",
-                "Q": "E",
-                "S": "F",
-                "L": "G",
-                "D": "H",
-                "P": "I",
-                "X": "J",
-                "N": "K",
-                "G": "L",
-                "O": "M",
-                "K": "N",
-                "M": "O",
-                "I": "P",
-                "E": "Q",
-                "B": "R",
-                "F": "S",
-                "Z": "T",
-                "C": "U",
-                "W": "V",
-                "V": "W",
-                "J": "X",
-                "A": "Y",
-                "T": "Z"
-},
+        "A" : [5, 10, 13, 26, 1, 12, 25, 24, 22, 2, 23, 6, 3, 18, 17, 21, 15, 14, 20, 19, 16, 9, 11, 8, 7, 4],
 
-        "C" : {
-                "F": "A",
-                "V": "B",
-                "P": "C",
-                "J": "D",
-                "I": "E",
-                "A": "F",
-                "O": "G",
-                "Y": "H",
-                "E": "I",
-                "D": "J",
-                "R": "K",
-                "Z": "L",
-                "X": "M",
-                "W": "N",
-                "G": "O",
-                "C": "P",
-                "T": "Q",
-                "K": "R",
-                "U": "S",
-                "Q": "T",
-                "S": "U",
-                "B": "V",
-                "N": "W",
-                "M": "X",
-                "H": "Y",
-                "L": "Z"
-},
+        "B" : [25, 18, 21, 8, 17, 19, 12, 4, 16, 24, 14, 7, 15, 11, 13, 9, 5, 2, 6, 26, 3, 23, 22, 10, 1, 20],
 
-    }
+        "C" : [6, 22, 16, 10, 9, 1, 15, 25, 5, 4, 18, 26, 24, 23, 7, 3, 20, 11, 21, 17, 19, 2, 14, 13, 8, 12]
+
+        }
     
     def __init__(self, reflector_type = "A" ):
 
         reflector_type = reflector_type.upper()
 
-        self.reflector_type = reflector_type
-
         if reflector_type not in self.reflectors:
             raise ValueError("Invalid Reflector-Typ: " + reflector_type )
+        
+        self.reflector_type = reflector_type
 
         self.reflector = self.reflectors[reflector_type]
 
@@ -109,8 +29,8 @@ class Reflector:
         print("\n")
 
     def swap(self, letter):
-        letter = letter.upper()
-        return self.reflector[letter]
+        
+        return self.reflector[(letter-1)]
     
     def get_reflector(self):
         return self.reflector

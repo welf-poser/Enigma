@@ -3,36 +3,11 @@ class Rotor:
     rotors = {
         1 : [
             
-            [5, 11, 13, 6, 12, 7, 4, 17, 22, 26, 14, 20, 15, 23, 25, 8, 24, 21, 19, 16, 1, 9, 2, 18, 3, 10]
-
-            ,{
-                "E": "A",
-                "K": "B",
-                "M": "C",
-                "F": "D",
-                "L": "E",
-                "G": "F",
-                "D": "G",
-                "Q": "H",
-                "V": "I",
-                "Z": "J",
-                "N": "K",
-                "T": "L",
-                "O": "M",
-                "W": "N",
-                "Y": "O",
-                "H": "P",
-                "X": "Q",
-                "U": "R",
-                "S": "S",
-                "P": "T",
-                "A": "U",
-                "I": "V",
-                "B": "W",
-                "R": "X",
-                "C": "Y",
-                "J": "Z"
-            }],
+            [5, 11, 13, 6, 12, 7, 4, 17, 22, 26, 14, 20, 15, 23, 25, 8, 24, 21, 19, 16, 1, 9, 2, 18, 3, 10],
+            [21, 23, 25, 7, 1, 4, 6, 16, 22, 26, 2, 5, 3, 11, 13, 20, 8, 24, 19, 12, 18, 9, 14, 17, 15, 10]
+            
+            ],
+            
 
         2 : [
             
@@ -290,25 +265,23 @@ class Rotor:
         
         self.rotor_type = rotor_type
         self.notch = self.notches[rotor_type]
+
         self.rotor = self.rotors[rotor_type]
+        self.list_fwd = self.rotor[0]
+        self.list_bwd = self.rotor[1]
 
         offset = ring_setting - 1  
         self.ring_setting = offset
 
-        
-
-        
     #def print_rotor(self):
 
-
     def swap(self, letter, pos):
-        letter = ord(letter) + pos
-        list = self.rotor[0]
-        return list[(letter-65)%25]
+        letter = (letter + pos)%25
+        return self.list_fwd[letter]
 
-
-    #def reverse_swap(self, letter, pos):
-
+    def reverse_swap(self, letter, pos):
+        letter = (letter + pos)%25
+        return self.list_bwd[letter]
 
     def get_rotor(self):
         return self.rotor
