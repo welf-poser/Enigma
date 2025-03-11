@@ -74,31 +74,31 @@ class Enigma:
 
 
             char = self.rotor1.swap(char, self.pos1)
-            print("Wheel 1 Encryption: " + chr(char))
+            print("Wheel 1 Encryption: " + chr(char+64))
 
             char = self.rotor2.swap(char, self.pos2)
-            print("Wheel 2 Encryption: " + chr(char))
+            print("Wheel 2 Encryption: " + chr(char+64))
 
             char = self.rotor3.swap(char, self.pos3)
-            print("Wheel 3 Encryption: " + chr(char))
+            print("Wheel 3 Encryption: " + chr(char+64))
 
 
             char = self.reflector.swap(char)  # Reflektor bleibt unverändert
-            print("Reflector Encryption: " + chr(char))
+            print("Reflector Encryption: " + chr(char+64))
 
 
             char = self.rotor3.reverse_swap(char, self.pos3)
-            print("Wheel 3 Reverse Encryption: " + chr(char))
+            print("Wheel 3 Reverse Encryption: " + chr(char+64))
 
 
             char = self.rotor2.reverse_swap(char, self.pos2)
-            print("Wheel 2 Reverse Encryption: " + chr(char))
+            print("Wheel 2 Reverse Encryption: " + chr(char+64))
 
  
             char = self.rotor1.reverse_swap(char, self.pos1)
-            print("Wheel 1 Reverse Encryption: " + chr(char))
+            print("Wheel 1 Reverse Encryption: " + chr(char+64))
 
-            char = chr(char + 65)
+            char = chr(char + 64)
 
             char = self.plugboard.swap(char)
             print("Plugboard Encryption: " + char)
