@@ -48,17 +48,17 @@ class Enigma:
 
             print("Keyboard Input: " + char)
 
-            self.pos1 = (self.pos1 % 26) + 1
+            self.pos1 = (self.pos1 +1) % 26
 
 
             if self.pos1 in self.rotor1.get_notch():
 
-                self.pos2 = (self.pos2 % 26) + 1
+                self.pos2 = (self.pos2 +1) % 26
 
                 # Double Step Mechanismus für den mittleren Rotor
                 if self.pos2 in self.rotor2.get_notch():
-                    self.pos2 = (self.pos2 % 26) + 1
-                    self.pos3 = (self.pos3 % 26) + 1
+                    self.pos2 = (self.pos2 +1) % 26
+                    self.pos3 = (self.pos3 +1) % 26
 
             print("Rotors Position: " + chr(self.pos3 + 65) + ", " +
                 chr(self.pos2 + 65) + ", " + chr(self.pos1 + 65))
@@ -71,16 +71,16 @@ class Enigma:
 
 
             char = ord(char) - 65
-
+            #A = 0
 
             char = self.rotor1.swap(char, self.pos1)
-            print("Wheel 1 Encryption: " + chr(char+65))
+            print("Wheel 1 Encryption: " + chr(char+64))
 
             char = self.rotor2.swap(char, self.pos2)
-            print("Wheel 2 Encryption: " + chr(char+65))
+            print("Wheel 2 Encryption: " + chr(char+64))
 
             char = self.rotor3.swap(char, self.pos3)
-            print("Wheel 3 Encryption: " + chr(char+65))
+            print("Wheel 3 Encryption: " + chr(char+64))
 
 
             char = self.reflector.swap(char)  # Reflektor bleibt unverändert

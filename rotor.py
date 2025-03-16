@@ -88,18 +88,20 @@ class Rotor:
         self.list_bwd = self.rotor[1]
 
         self.ring_setting = ring_setting - 1  
-        self.map_bwd = {0:0, 1:25, 2:24, 3:23, 4:22, 4:21, 5:20, 6:19, 7:18, 8:17, 9:16, 10:15, 11:14, 12:13, 13:12, 14:11, 15:10, 16:9, 17:8, 18:7, 19:6, 20:5, 21:4, 22:3, 23:2, 24:1}
+        
 
     #def print_rotor(self):
 
     def swap(self, letter, pos):
-
-        pos_offset = self.map_bwd[pos]
-        (letter + pos)%25
+        print(letter)
+        letter = letter - pos
+        print(letter)
+        print(pos)
+        print(self.list_fwd[letter])
         return self.list_fwd[letter]
 
     def reverse_swap(self, letter, pos):
-        letter = (letter + pos)%25
+        letter = letter - pos
         return self.list_bwd[letter]
 
     def get_rotor(self):
